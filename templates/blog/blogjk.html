@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} BlogPost - {{post.author}}{% endblock title %}
+
+{% block body %}
+<section class="text-center">
+  <div class="container my-10">
+    <h1>{{post.title}}</h1>
+    <p>{{post.content}}</p>
+  </div>
+  
+</section>
+
+{% endblock body %}

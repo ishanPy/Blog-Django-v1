@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block title %} BlogPost - {{post.author}}{% endblock title %}
+
+{% block body %}
+
+<div class="container">
+    <div class="blog-post">
+        <h2 class="my-3 blog-post-title"><b>{{post.title}}</b></h2>
+        <p class="blog-post-meta">At {{post.timeStamp}} by <strong><a href="/about">{{post.author}}</a></strong></p>
+        <p>{{post.content}}</p>
+        <hr>
+
+    </div>
+</div>
+<div class="container">
+    <h2>Comments</h2>
+    <form action="/blog/postComment" method='post'>
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="exampleInputEmail1">Post Comment</label>
+            <input type="text" class="form-control" name="comment">
+        </div>
+        <input type="hidden" name="postSno" value="{{post.sno}}">
+        <button type="submit" class="mt-2 btn btn-primary">Submit</button>
+    </form>
+    {% for comment in comments %}
+
+    <div class="row my-3">
+    <div class="col-md-1">
+    <img class="rounded mx-auto d-block w-100" src="/static/img/1.png">
+    </div>
+    <div class="col-md-11"><b>{{comment.user.username}}</b> at {{comment.timestamp}}
+    <div>{{comment.comments}}</div>
+    
+    </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock body %}
