@@ -34,7 +34,7 @@ click-plugins==1.1.1
 colorama==0.4.3
 configobj==5.0.6
 constantly==15.1.0
-cryptography==2.6.1
+cryptography==3.2
 cycler==0.10.0
 Cython==0.29.14
 dbus-python==1.2.16
